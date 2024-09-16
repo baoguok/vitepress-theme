@@ -2,6 +2,9 @@ import DefaultTheme from 'vitepress/theme';
 import Layout from './layout/Layout.vue';
 import './style/var.css';
 import {install} from './components/index';
+import copyright from "./block/copyright";
+import message from "./block/message";
+
 
 export default {
     extends: DefaultTheme,
@@ -17,3 +20,7 @@ export default {
     },
     Layout
 }
+
+
+//Footer
+export const footer = {copyright, message}

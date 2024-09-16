@@ -2,15 +2,14 @@
 import {randomSay} from './data'
 </script>
 
+<!--组件功能：随机显示经典语录，为学习加油打气-->
 <template>
-
   <div class="saying" v-html="randomSay()"></div>
-
 </template>
 
 <style scoped>
 
-.saying{
+.saying {
   border-color: var(--vp-custom-block-tip-border);
   color: var(--vp-custom-block-tip-text);
   background-color: var(--vp-custom-block-tip-bg);

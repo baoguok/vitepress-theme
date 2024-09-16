@@ -1,4 +1,4 @@
-//httpPost 接口POST请求
+//接口POST请求
 export async function httpPost(path, body) {
     const response = await fetch(path, {
         method: "POST", body: JSON.stringify(body), headers: {"Content-Type": "application/json"}

@@ -1,11 +1,11 @@
-
+/* 默认主题样式 */
 :root {
     /* 标题 */
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background:  linear-gradient( 135deg, #FEC163 10%, #DE4313 100%);
+    --vp-home-hero-name-background: linear-gradient(135deg, #FEC163 10%, #DE4313 100%);
 
     /* 图标背景 */
-    --vp-home-hero-image-background-image:  linear-gradient( 135deg, #FEC163 10%, #DE4313 100%);
+    --vp-home-hero-image-background-image: linear-gradient(135deg, #FEC163 10%, #DE4313 100%);
     --vp-home-hero-image-filter: blur(150px);
 
     /* brand按钮 */
@@ -22,10 +22,8 @@
     /* features
     --vp-c-bg-soft: #fcdba8
      */
+
+    /*--vp-layout-max-width: 100%;*/ /* 调整默认主题宽度 */
+    --vp-sidebar-width: 300px; /*侧边栏宽度*/
 }
 
-
-/* 调整默认主题宽度 */
-:root {
-
-}

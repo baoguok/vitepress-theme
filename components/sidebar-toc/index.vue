@@ -8,12 +8,12 @@ const items = theme.value.sidebar[path];
 </script>
 
 <template>
-<!-- 侧边栏渲染为目录页面 -->
+<!-- 在page页面， 通过侧边栏渲染为目录页面 -->
   <div class="toc">
     <template v-for="(item,i) in items">
       <div class="block" v-if="i>0">
         <a class="h1" v-if="item.link" :href="item.link">📖{{ item.text }}</a>
-        <span class="h1" v-if="!item.link">📖{{ item.text }}</span>
+        <span class="h1" v-if="!item.link">{{ item.text }}</span>
         <div class="ul" v-if="item.items">
           <template v-for="(item2,i2) in item.items">
             <a class="h2" :href="item2.link||'javascript:void(0);'">{{ item2.text }}</a>
@@ -55,7 +55,7 @@ a {
 .toc .block {
   width: 360px;
   margin: 15px 15px 0 0;
-  border: 1px solid #eee;
+  /*border: 1px solid #eee;*/
 }
 
 .toc .block .ul {

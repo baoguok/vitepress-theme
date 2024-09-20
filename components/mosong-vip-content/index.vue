@@ -25,14 +25,9 @@ function buy() {
 </script>
 
 <template>
-  <div class="vip-content" origin="https://vitepress.mosong.cc">
-    <span class="mosong-vip-content-beg"></span>
-  </div>
-
   <template v-if="$store.user.type==='vip' || isDev "><slot></slot></template>
 
-  <div :style="{display: ($store.user.type!=='vip'||isDev)?'block':'none'}">
-    <span class="mosong-vip-content-end"></span>
+  <div :style="{display: ($store.user.type!=='vip'||isDev)?'block':'none'}"  origin="https://vitepress.mosong.cc">
     <div class="vip-block">
       <div class="content">
         <p>💞开通VIP，阅读全部会员文章。
@@ -56,6 +51,7 @@ function buy() {
   color: #666666;
   border-radius: 10px;
   padding: 15px;
+  margin-top: 15px;
 }
 
 .content {

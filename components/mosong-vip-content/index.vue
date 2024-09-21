@@ -30,7 +30,7 @@ function buy() {
   <div :style="{display: ($store.user.type!=='vip'||isDev)?'block':'none'}"  origin="https://vitepress.mosong.cc">
     <div class="vip-block">
       <div class="content">
-        <p>💞开通VIP，阅读全部会员文章。
+        <p>💞开通VIP，可阅读全部会员文档。
           <template v-if="!$store.isLogin">如果你已经开通，请 <a @click="$store.loginVisible=true">登录</a></template>
         </p>
         <button class="btn" @click="buy">🔒去开通</button>

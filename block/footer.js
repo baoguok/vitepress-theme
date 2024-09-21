@@ -1,3 +1,6 @@
+//Footer Message
+export const message = ``;
+
 //Footer Copyright
 export const copyright = `
 Copyright&nbsp;©&nbsp;2024&nbsp;&nbsp;
@@ -6,4 +9,7 @@ Copyright&nbsp;©&nbsp;2024&nbsp;&nbsp;
 <a href="https://blog.mosong.cc" target="_blank" style="text-decoration-line: none;">微信公众号：程序员墨松</a>
 `;
 
-export default copyright;
+export default {
+    message,
+    copyright
+}

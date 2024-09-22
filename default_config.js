@@ -7,7 +7,7 @@ export default {
     lastUpdated: false,
     metaChunk: true, //将页面元数据提取到单独的 JavaScript 块中，而不是内联在初始 HTML 中。
     vite: {
-        assetsInclude: ['**/*.awebp'],
+        assetsInclude: ['**/*.awebp', '**/*.webp'],
         server: {
             proxy: {
                 '/vpapi/': {target: 'http://localhost:80', changeOrigin: true},

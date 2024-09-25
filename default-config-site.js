@@ -6,14 +6,6 @@ export default {
     appearance: true,
     lastUpdated: false,
     metaChunk: true, //将页面元数据提取到单独的 JavaScript 块中，而不是内联在初始 HTML 中。
-    outline: {level: 'deep', label: '目录'},// 文档大纲显示标题级别
-    docFooter: {
-        prev: '上一页',
-        next: '下一页'
-    },
-    search: {
-        provider: 'local'
-    },
     vite: {
         assetsInclude: ['**/*.awebp', '**/*.webp'],
         server: {

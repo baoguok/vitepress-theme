@@ -1,4 +1,6 @@
-## VitePress Theme
+## VitePress Theme 
+
+Vitepress 知识付费主题。
 
 主题主页：[https://vitepress.mosong.cc](https://vitepress.mosong.cc)
 

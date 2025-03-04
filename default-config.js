@@ -1,3 +1,4 @@
+//deprecated 2025-03-04 改为使用config.js 文件
 import footer from "./block/footer";
 
 /**

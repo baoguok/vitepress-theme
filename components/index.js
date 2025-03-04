@@ -10,10 +10,12 @@ export const components = {
     Saying
 };
 
+//注册自定义组件，注册后可以在文档中全局使用
 export function install(app) {
     for (let k in components) {
         app.component(k, components[k]);
     }
 }
 
+//可以不全局注册，按需单个import使用。
 export default components;

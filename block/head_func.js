@@ -1,3 +1,5 @@
+//deprecated 2025-03-04 拆分使用
+
 /* 网页head加标签 */
 
 //百度统计代码，提示：Vitepress是单页面，还要为router做处理

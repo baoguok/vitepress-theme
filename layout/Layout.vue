@@ -1,7 +1,7 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme';
 import Login from './login/login.vue';
-import MosongVipContentPopout from "../components/mosong-vip-content/popout.vue"
+import MsVipContentPopout from "../components/ms-vip-content/popout.vue"
 
 const {Layout} = DefaultTheme
 
@@ -10,9 +10,10 @@ const {Layout} = DefaultTheme
 <template>
   <Layout>
     <template #nav-bar-content-after>
+      <!--登录-->
       <Login></Login>
-      <!--会员购买弹框-->
-      <MosongVipContentPopout></MosongVipContentPopout>
+      <!--购买会员弹框-->
+      <MsVipContentPopout></MsVipContentPopout>
     </template>
 
     <template #doc-footer-before>

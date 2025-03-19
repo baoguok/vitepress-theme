@@ -1,15 +1,20 @@
-import MosongVipContent from './mosong-vip-content/index.vue';
-import QrcodeMp from './qrcode-mp/index.vue';
-import QrcodeWx from './qrcode-wx/index.vue';
-import Saying from './saying/index.vue';
-import SidebarToc from './sidebar-toc/index.vue';
+/**
+ * 组件说明
+ * 1. 自定义组件名称使用 `ms-`开头
+ *
+ */
+import MsVipContent from './ms-vip-content/index.vue';
+import MsQrcodeMp from './ms-qrcode-mp/index.vue';
+import MsQrcodeWx from './ms-qrcode-wx/index.vue';
+import MsSaying from './ms-saying/index.vue';
+import MsSidebarToc from './ms-sidebar-toc/index.vue';
 
 export const components = {
-    MosongVipContent,
-    QrcodeMp,
-    QrcodeWx,
-    Saying,
-    SidebarToc
+    MsVipContent,
+    MsQrcodeMp,
+    MsQrcodeWx,
+    MsSaying,
+    MsSidebarToc
 };
 
 //注册自定义组件，注册后可以在文档中全局使用

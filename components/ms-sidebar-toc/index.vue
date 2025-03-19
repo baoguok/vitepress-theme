@@ -4,7 +4,7 @@
 
 **用法示例：
 在.md文件中使用标签
-<sidebar-toc path="/faq/" />
+<ms-sidebar-toc path="/faq/" />
 参数path为sidebar中配置的目录路径。
 -->
 

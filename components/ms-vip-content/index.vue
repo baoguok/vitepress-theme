@@ -1,8 +1,3 @@
-<!--
-通过替换开始(mosong-vip-content-beg)结束(mosong-vip-content-end)标记间的内容，控制【VIP可见内容】与【VIP开通提示】只有一个正常展示。
-
-插槽slot放组件根路径，不影响文档原始结构。
--->
 <script setup>
 import {ref} from 'vue'
 import {$store} from "../../store";
@@ -11,9 +6,10 @@ import {data} from "./data";
 // 开发环境显示所有内容
 const isDev = ref(false)
 if (typeof window !== 'undefined') {
-  isDev.value = window.location.href.indexOf('://localhost') !== -1
+  isDev.value = window.location.href.indexOf('://127.0.0.1') !== -1
 }
 
+//点击开通会员
 function buy() {
   if (!$store.isLogin) {
     $store.loginVisible = true
@@ -27,7 +23,7 @@ function buy() {
 <template>
   <template v-if="$store.user.type==='vip' || isDev "><slot></slot></template>
 
-  <div :style="{display: ($store.user.type!=='vip'||isDev)?'block':'none'}"  origin="https://vitepress.mosong.cc">
+  <div :style="{display: ($store.user.type!=='vip'||isDev)?'block':'none'}">
     <div class="vip-block">
       <div class="content">
         <p>💞开通VIP，可阅读全部会员文档。
@@ -38,7 +34,7 @@ function buy() {
     </div>
     <div style="display: none;">
       <a href="https://vitepress.mosong.cc">VitePress主题</a>
-      <a href="https://blog.mosong.cc">程序员墨松</a>
+      <a href="https://blog.mosong.cc">墨松博客</a>
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@
 import {$store, setStore} from "../../store";
 import {$data} from "./data";
 import {logout} from "./login";
-import {data as mosongVipContentData} from '../../components/mosong-vip-content/data'
+import {data as msVipContentData} from '../../components/ms-vip-content/data'
 
 
 function mouseout(event) {
@@ -32,7 +32,7 @@ async function exit() {
       </div>
       <div class="row-vip" v-if="$store.user.type==='vip'">
         <span>VIP至：{{ $store.user.vip_date }} </span>
-        <a @click="mosongVipContentData.visible=true">续费</a>
+        <a @click="msVipContentData.visible=true">续费</a>
       </div>
       <div class="exit">
         <button class="exitBtn" @click="exit">退出登录</button>

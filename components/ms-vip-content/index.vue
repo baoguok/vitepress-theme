@@ -1,13 +1,6 @@
 <script setup>
-import {ref} from 'vue'
 import {$store} from "../../store";
 import {data} from "./data";
-
-// 开发环境显示所有内容
-const isDev = ref(false)
-if (typeof window !== 'undefined') {
-  isDev.value = window.location.href.indexOf('://127.0.0.1') !== -1
-}
 
 //点击开通会员
 function buy() {
@@ -21,9 +14,9 @@ function buy() {
 </script>
 
 <template>
-  <template v-if="$store.user.type==='vip' || isDev "><slot></slot></template>
+  <template v-if="$store.user.type==='vip' || data.isDev "><slot></slot></template>
 
-  <div :style="{display: ($store.user.type!=='vip'||isDev)?'block':'none'}">
+  <div :style="{display: ($store.user.type!=='vip'||data.isDev)?'block':'none'}">
     <div class="vip-block">
       <div class="content">
         <p>💞开通VIP，可阅读全部会员文档。

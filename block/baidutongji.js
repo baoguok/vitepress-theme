@@ -12,7 +12,7 @@ export const head = (key) => {
 }
 
 // 单页面应用路由更新时触发百度统计事件
-export const trackPageview = (to) => {
+export const trackPageView = (to) => {
     if (typeof _hmt !== 'undefined') {
         _hmt.push(['_trackPageview', to]);
     }

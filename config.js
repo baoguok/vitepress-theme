@@ -38,7 +38,8 @@ const config = {
     },
     //默认主题定制功能配置参数
     themeCustom: {
-        //展示VIP内容，用于本地编辑时调试
+        //未开通会员时展示会员表内容，用于文档本地编辑时预览会员内容
+        //vipContentVisible: import.meta.env.MODE === 'development',
         vipContentVisible: false,
         //微信个人号二维码
         qrcode: '',

@@ -1,6 +1,10 @@
 <script setup>
+import {useData} from "vitepress";
 import {$store} from "../../store";
 import {data} from "./data";
+
+const site = useData();
+
 
 //点击开通会员
 function buy() {
@@ -14,9 +18,9 @@ function buy() {
 </script>
 
 <template>
-  <template v-if="$store.user.type==='vip' || data.isDev "><slot></slot></template>
+  <template v-if="$store.user.type==='vip' || site.themeCustom.vipContentVisible "><slot></slot></template>
 
-  <div :style="{display: ($store.user.type!=='vip'||data.isDev)?'block':'none'}">
+  <div :style="{display: ($store.user.type!=='vip')?'block':'none'}">
     <div class="vip-block">
       <div class="content">
         <p>💞开通VIP，可阅读全部会员文档。

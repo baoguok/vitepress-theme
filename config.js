@@ -1,6 +1,7 @@
 import {deepMerge} from "./utils/merge";
 import favicon from "./block/favicon";
 import baidutongji from "./block/baidutongji";
+import v651la from "./block/v651la";
 
 /**
  * 主题默认配置文件
@@ -35,18 +36,15 @@ const config = {
         },
         //右上角的链接，一般是源码链接
         socialLinks: [],
-    },
-    //默认主题定制功能配置参数
-    themeCustom: {
-        //未开通会员时展示会员表内容，用于文档本地编辑时预览会员内容
-        //vipContentVisible: import.meta.env.MODE === 'development',
-        vipContentVisible: false,
-        //微信个人号二维码
-        qrcode: '',
-        //微信公众号二维码
-        qrcodegzh: '',
-        //百度统计
+        //提示：下面的扩展主题配置是当前主题扩展功能的配置参数，默认主题没有这些配置项
+        //扩展主题配置：未开通会员时展示会员表内容，用于文档本地编辑时预览会员内容
+        vipVisible: false,
+        //扩展主题配置：百度统计
         baidutongjiKey: '',
+        //扩展主题配置：51la统计ID掩码
+        laid: '',
+        //扩展主题配置：51la统计ck标识
+        lack: '',
     },
     vite: {
         //配置支持的资源文件后缀
@@ -80,8 +78,12 @@ export default config;
 export const mergeConfig = (conf) => {
     let c = deepMerge(config, conf);
     //百度统计添加到head
-    if (c.themeCustom.baidutongjiKey) {
-        c.head.push(baidutongji(c.themeCustom.baidutongjiKey))
+    if (c.themeConfig.baidutongjiKey) {
+        c.head.push(...baidutongji(c.themeConfig.baidutongjiKey))
+    }
+    //51la统计添加到head
+    if (c.themeConfig.laid && c.themeConfig.lack) {
+        c.head.push(...v651la(c.themeConfig.laid, c.themeConfig.lack))
     }
     return c;
 }

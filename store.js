@@ -24,8 +24,10 @@ export const userinfo = async function () {
 
 //初始化加载用户信息
 (async () => {
-    if (typeof document !== 'undefined') {
+    try {
         await userinfo();
+    }catch (e) {
+        //console.log(e)
     }
 })();
 

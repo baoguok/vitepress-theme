@@ -3,8 +3,7 @@ import {useData} from "vitepress";
 import {$store} from "../../store";
 import {data} from "./data";
 
-const site = useData();
-
+const {theme} = useData();
 
 //点击开通会员
 function buy() {
@@ -18,7 +17,7 @@ function buy() {
 </script>
 
 <template>
-  <template v-if="$store.user.type==='vip' || site.themeCustom.vipContentVisible "><slot></slot></template>
+  <template v-if="$store.user.type==='vip' || theme.vipVisible "><slot></slot></template>
 
   <div :style="{display: ($store.user.type!=='vip')?'block':'none'}">
     <div class="vip-block">

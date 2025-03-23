@@ -3,13 +3,14 @@ export async function httpPost(path, body) {
     const response = await fetch(path, {
         method: "POST", body: JSON.stringify(body), headers: {"Content-Type": "application/json"}
     })
-    const result = await response.json()
-    if (result.errno !== "00000") {
-        throw new Error(result.errno + ":" + result.errmsg)
+    const rs = await response.json()
+    if (rs.errno !== "00000") {
+        throw new Error(rs.errno + ":" + rs.errmsg)
     }
-    return result.body
+    return rs.body
 }
 
+//生成不带分隔符的UUID
 export function uuid() {
     return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         let r = (Math.random() * 16) | 0;

@@ -2,6 +2,8 @@ import {deepMerge} from "./utils/merge";
 import favicon from "./block/favicon";
 import baidutongji from "./block/baidutongji";
 
+console.log("process.env.npm_lifecycle_event =", process.env.npm_lifecycle_event);
+
 /**
  * 主题默认配置文件
  * 更多配置说明可以看 VitePress 文档中站点配置说明 https://vitepress.dev/zh/reference/site-config
@@ -36,13 +38,13 @@ const config = {
         //右上角的链接，一般是源码链接
         socialLinks: [],
         //首页底部信息
-        footer:{
-            message:'',
-            copyright:`Copyright&nbsp;©&nbsp;2025&nbsp;&nbsp;&nbsp;主题 <a href="https://vitepress.mosong.cc" target="_blank" style="">VitePress Theme</a>`
+        footer: {
+            message: '',
+            copyright: `Copyright&nbsp;©&nbsp;2025&nbsp;&nbsp;&nbsp;主题 <a href="https://vitepress.mosong.cc" target="_blank" style="">VitePress Theme</a>`
         },
         //提示：下面的扩展主题配置是当前主题扩展功能的配置参数，默认主题没有这些配置项
         //接口服务地址，如：  https://vpapi.mosong.cc
-        vpapi: '',
+        vpapi: process.env.npm_lifecycle_event === 'docs:dev' ? '' : 'https://vpapi.mosong.cc',
         //扩展主题配置：不判断权限展示会员内容，用于文档本地编辑时预览
         vipVisible: false,
         //扩展主题配置：百度统计
@@ -83,6 +85,8 @@ export const mergeConfig = (conf) => {
     if (c.themeConfig.baidutongjiKey) {
         c.head.push(...baidutongji(c.themeConfig.baidutongjiKey))
     }
+    console.log(`themeConfig.vpapi = '${c.themeConfig.vpapi}'`);
+    console.log(`themeConfig.vipVisible = ${c.themeConfig.vipVisible}`);
     return c;
 }
 

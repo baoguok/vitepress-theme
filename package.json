@@ -6,5 +6,5 @@
   "devDependencies": {
     "qrcode": "^1.5.4"
   },
-  "remark": "devDependencies 配置当前主题使用的依赖"
+  "remark": "devDependencies 是当前主题使用的依赖库，直接基于当前目录安装或者添加到文档项目package.json中"
 }

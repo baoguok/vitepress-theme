@@ -1,8 +1,6 @@
 import {deepMerge} from "./utils/merge";
 import favicon from "./block/favicon";
 import baidutongji from "./block/baidutongji";
-import v651la from "./block/v651la";
-import {copyright, message} from "../footer";
 
 /**
  * 主题默认配置文件
@@ -43,26 +41,22 @@ const config = {
             copyright:`Copyright&nbsp;©&nbsp;2025&nbsp;&nbsp;&nbsp;主题 <a href="https://vitepress.mosong.cc" target="_blank" style="">VitePress Theme</a>`
         },
         //提示：下面的扩展主题配置是当前主题扩展功能的配置参数，默认主题没有这些配置项
-        //接口服务地址
-        vpapi:'https://vpapi.mosong.cc',
+        //接口服务地址，如：  https://vpapi.mosong.cc
+        vpapi: '',
         //扩展主题配置：不判断权限展示会员内容，用于文档本地编辑时预览
         vipVisible: false,
         //扩展主题配置：百度统计
         baidutongjiKey: '',
-        //扩展主题配置：51la统计ID掩码
-        laid: '',
-        //扩展主题配置：51la统计ck标识
-        lack: '',
     },
     vite: {
         //配置支持的资源文件后缀
         assetsInclude: ['**/*.awebp', '**/*.webp'],
-        //本地调试时使用的接口服务，请按需修改target地址
         server: {
             proxy: {
                 '/vpapi/': {
+                    //本地调试时使用的接口服务，请按需修改自己的target地址
                     //target: 'http://localhost:80',
-                    target: 'https://vitepress.mosong.cc',
+                    target: 'https://vpapi.mosong.cc',
                     changeOrigin: true
                 },
             }
@@ -88,10 +82,6 @@ export const mergeConfig = (conf) => {
     //百度统计添加到head
     if (c.themeConfig.baidutongjiKey) {
         c.head.push(...baidutongji(c.themeConfig.baidutongjiKey))
-    }
-    //51la统计添加到head
-    if (c.themeConfig.laid && c.themeConfig.lack) {
-        c.head.push(...v651la(c.themeConfig.laid, c.themeConfig.lack))
     }
     return c;
 }

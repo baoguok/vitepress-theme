@@ -1,7 +1,8 @@
 import QRCode from "qrcode";
-import {httpPost, uuid} from "../../utils/http";
+import { httpPost, uuid} from "../../utils/http";
 import {reactive} from "vue";
-import {$store, userinfo} from "../../store";
+import {$store} from "../../store";
+import {userinfo, authorize, oauthPolling} from "../../api";
 import {$data} from "./data";
 
 // 组件状态值
@@ -11,15 +12,10 @@ export const datum = reactive({
     pollNum: 0,//轮询重试次数，最多10次停止
 })
 
-export function authorize(state) {
-    return `${window.location.protocol}//${window.location.host}/vpapi/meb/weixin-authorize?scope=snsapi_userinfo&state=${state}`
-}
-
 //PC网页，生成二维码图片，微信扫码授权
-export async function authorizeQrcode(state) {
-    const text = authorize(state)
-    const img = (await QRCode.toDataURL(text))
-    console.log(text)
+export async function authorizeQrcode(url) {
+    const img = (await QRCode.toDataURL(url))
+    console.log(url)
     console.log(img)
     return img
 }
@@ -37,7 +33,7 @@ export async function polling(state) {
         return
     }
     try {
-        let body = await httpPost("/vpapi/meb/oauth-polling", {state})
+        let body = await oauthPolling(state)
         if (body && body.status === '1') {
             await userinfo()
             $store.loginVisible = false; //登录成功关弹框
@@ -59,16 +55,11 @@ export async function login() {
         return
     }
     // 电脑浏览器显示二维码
-    const cid = uuid()
-    datum.qrimg = await authorizeQrcode(cid)
-    setTimeout(async () => await polling(cid), 6 * 1000)
+    const {state,url} = await authorize()
+    datum.qrimg = await authorizeQrcode(url)
+    setTimeout(async () => await polling(state), 6 * 1000)
 
     //TODO 手机微信，直接跳转授权
-}
-
-// 退出登录
-export async function logout() {
-    await httpPost("/vpapi/meb/logout", {})
 }
 
 export default {

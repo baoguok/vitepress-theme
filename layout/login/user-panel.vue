@@ -1,7 +1,7 @@
 <script setup>
 import {$store, setStore} from "../../store";
 import {$data} from "./data";
-import {logout} from "./login";
+import {logout} from "../../api";
 import {data as msVipContentData} from '../../components/ms-vip-content/data'
 
 

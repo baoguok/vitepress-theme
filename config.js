@@ -2,6 +2,7 @@ import {deepMerge} from "./utils/merge";
 import favicon from "./block/favicon";
 import baidutongji from "./block/baidutongji";
 import v651la from "./block/v651la";
+import {copyright, message} from "../footer";
 
 /**
  * 主题默认配置文件
@@ -36,8 +37,15 @@ const config = {
         },
         //右上角的链接，一般是源码链接
         socialLinks: [],
+        //首页底部信息
+        footer:{
+            message:'',
+            copyright:`Copyright&nbsp;©&nbsp;2025&nbsp;&nbsp;&nbsp;主题 <a href="https://vitepress.mosong.cc" target="_blank" style="">VitePress Theme</a>`
+        },
         //提示：下面的扩展主题配置是当前主题扩展功能的配置参数，默认主题没有这些配置项
-        //扩展主题配置：未开通会员时展示会员表内容，用于文档本地编辑时预览会员内容
+        //接口服务地址
+        vpapi:'https://vpapi.mosong.cc',
+        //扩展主题配置：不判断权限展示会员内容，用于文档本地编辑时预览
         vipVisible: false,
         //扩展主题配置：百度统计
         baidutongjiKey: '',

@@ -1,7 +1,13 @@
+import $store from "../store";
+
 //接口POST请求
 export async function httpPost(path, body) {
-    const response = await fetch(path, {
-        method: "POST", body: JSON.stringify(body), headers: {"Content-Type": "application/json"}
+    const response = await fetch($store.theme.vpapi + path, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        mode: "cors",//允许跨域
+        credentials: "include",//允许携带cookie
+        body: JSON.stringify(body),
     })
     const rs = await response.json()
     if (rs.errno !== "00000") {

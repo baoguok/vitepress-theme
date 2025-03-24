@@ -1,8 +1,7 @@
 import {watch} from "vue";
 import QRCode from "qrcode";
 import {data} from './data.js';
-import {httpPost} from "../../utils/http";
-import {userinfo} from "../../store";
+import {userinfo,productList,productBuyQryApi} from "../../api";
 
 // 查订单状态
 export async function productBuyQry() {
@@ -10,7 +9,7 @@ export async function productBuyQry() {
         return
     }
     try {
-        let body = await httpPost('/vpapi/meb/product-buy-qry', {prod_id: data.active})
+        let body = await productBuyQryApi(data.active);
         if (body && body.status === 'finish') { //成功，更新用户信息，隐藏购买弹框
             await userinfo()
             data.visible = false
@@ -22,10 +21,6 @@ export async function productBuyQry() {
     setTimeout(async () => await productBuyQry(), 10 * 1000)
 }
 
-// 查询产品
-export async function productList() {
-    return await httpPost("/vpapi/meb/product-list", {})
-}
 
 // 选择会员
 export async function selectVip(active, buyUrl) {

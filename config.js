@@ -44,7 +44,7 @@ const config = {
         },
         //提示：下面的扩展主题配置是当前主题扩展功能的配置参数，默认主题没有这些配置项
         //接口服务地址，如：  https://vpapi.mosong.cc
-        vpapi: process.env.npm_lifecycle_event === 'docs:dev' ? '' : 'https://vpapi.mosong.cc',
+        vpapi: 'https://vpapi.mosong.cc',
         //扩展主题配置：不判断权限展示会员内容，用于文档本地编辑时预览
         vipVisible: false,
         //扩展主题配置：百度统计
@@ -55,8 +55,8 @@ const config = {
         assetsInclude: ['**/*.awebp', '**/*.webp'],
         server: {
             proxy: {
+                //主题配置vpapi为空时，这里的代理才会生效
                 '/vpapi/': {
-                    //本地调试时使用的接口服务，请按需修改自己的target地址
                     //target: 'http://localhost:80',
                     target: 'https://vpapi.mosong.cc',
                     changeOrigin: true

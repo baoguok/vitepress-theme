@@ -4,7 +4,7 @@ import {setStore} from "./store";
 //获取授权链接
 export const authorize = async () => await httpPost('/vpapi/meb/oauth-authorize', {origin:location.href});
 
-//轮询查询授权结果
+//轮询授权结果
 export const oauthPolling = async (state)=>await httpPost("/vpapi/meb/oauth-polling", {state});
 
 //查询登录用户信息

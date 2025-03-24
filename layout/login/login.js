@@ -1,5 +1,5 @@
 import QRCode from "qrcode";
-import { httpPost, uuid} from "../../utils/http";
+import {setCookie} from "../../utils/http";
 import {reactive} from "vue";
 import {$store} from "../../store";
 import {userinfo, authorize, oauthPolling} from "../../api";
@@ -35,6 +35,8 @@ export async function polling(state) {
     try {
         let body = await oauthPolling(state)
         if (body && body.status === '1') {
+            //主题开发模式启动没有配置vpapi时，设置cookie。如果配置了vpapi自动携带cookie
+            if (!$store.theme.vpapi) setCookie("mss", body.token, 365);
             await userinfo()
             $store.loginVisible = false; //登录成功关弹框
             return
@@ -55,7 +57,7 @@ export async function login() {
         return
     }
     // 电脑浏览器显示二维码
-    const {state,url} = await authorize()
+    const {state, url} = await authorize()
     datum.qrimg = await authorizeQrcode(url)
     setTimeout(async () => await polling(state), 6 * 1000)
 
